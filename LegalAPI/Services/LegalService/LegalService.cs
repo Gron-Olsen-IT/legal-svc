@@ -3,7 +3,6 @@ namespace LegalAPI.Services;
 using System.Text;
 using System.Text.Json;
 using LegalAPI.Controllers;
-using LegalAPI.InfraRepo;
 
 public class LegalService : ILegalService
 {
