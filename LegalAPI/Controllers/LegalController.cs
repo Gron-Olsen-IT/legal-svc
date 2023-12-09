@@ -34,7 +34,7 @@ public class LegalController : ControllerBase
         }
     }
 
-
+    [Authorize]
     [HttpGet("auctions/{auctionId}")]
     //summary: Get a specific auction
     public async Task<IActionResult> GetAuctionById(string auctionId)
@@ -51,7 +51,7 @@ public class LegalController : ControllerBase
         }
     }
 
-
+    [Authorize]
     [HttpGet("users/{userId}")]
     //summary: Get a specific user
     public async Task<IActionResult> GetUserById(string userId)
