@@ -1,4 +1,4 @@
-namespace LegalAPI.InfraRepo;
+namespace LegalAPI.Services;
 using LegalAPI.Services;
 
 public interface IInfraRepo

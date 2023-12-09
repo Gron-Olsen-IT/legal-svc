@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAPI", "LegalAPI\LegalA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalAPI.Tests", "LegalAPI.Tests\LegalAPI.Tests.csproj", "{EAE27E95-BC02-4707-A302-C16D95339C25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sidecar", "sidecar", "{0E0A15C2-DF07-4B02-9C43-0DA87D0CFF0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sidecar-lib", "sidecar\sidecar-lib\sidecar-lib.csproj", "{C7248DD6-4B9A-4E61-9B46-312C51733956}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,12 @@ Global
 		{EAE27E95-BC02-4707-A302-C16D95339C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAE27E95-BC02-4707-A302-C16D95339C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAE27E95-BC02-4707-A302-C16D95339C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7248DD6-4B9A-4E61-9B46-312C51733956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7248DD6-4B9A-4E61-9B46-312C51733956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7248DD6-4B9A-4E61-9B46-312C51733956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7248DD6-4B9A-4E61-9B46-312C51733956}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C7248DD6-4B9A-4E61-9B46-312C51733956} = {0E0A15C2-DF07-4B02-9C43-0DA87D0CFF0F}
 	EndGlobalSection
 EndGlobal
