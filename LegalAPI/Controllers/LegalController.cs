@@ -1,6 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
 using LegalAPI.Services;
-using LegalAPI.InfraRepo;
 using Microsoft.AspNetCore.Authorization;
 
 namespace LegalAPI.Controllers;
@@ -18,7 +17,7 @@ public class LegalController : ControllerBase
         _legalService = legalService;
     }
 
-
+    [Authorize]
     [HttpGet("auctions")]
     //summary: Get a list of auctions
     public async Task<IActionResult> GetAllAuctions()
