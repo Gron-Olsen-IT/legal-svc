@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LegalAPI.Controllers;
 
+[Authorize]
 [ApiController]
-[Route("[controller]")]
+[Route("legal")]
 public class LegalController : ControllerBase
 {
     private readonly ILogger<LegalController> _logger;
@@ -17,9 +18,13 @@ public class LegalController : ControllerBase
         _legalService = legalService;
     }
 
-    [Authorize]
+    /// <summary>
+    /// Get all auctions
+    /// </summary>
+    /// <response code="200">Returns a list containing all auctions</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <returns></returns>
     [HttpGet("auctions")]
-    //summary: Get a list of auctions
     public async Task<IActionResult> GetAllAuctions()
     {
         try
@@ -34,14 +39,18 @@ public class LegalController : ControllerBase
         }
     }
 
-    [Authorize]
+    /// <summary>
+    /// Get a specific auction by id
+    /// </summary>
+    /// <response code="200">Returns an auction</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <returns></returns>
     [HttpGet("auctions/{auctionId}")]
-    //summary: Get a specific auction
     public async Task<IActionResult> GetAuctionById(string auctionId)
     {
         try
         {
-            var auction = await _legalService.GetAuctionById(auctionId,Request.Headers["Authorization"]!);
+            var auction = await _legalService.GetAuctionById(auctionId, Request.Headers["Authorization"]!);
             return Ok(auction);
         }
         catch (Exception e)
@@ -51,9 +60,13 @@ public class LegalController : ControllerBase
         }
     }
 
-    [Authorize]
+    /// <summary>
+    /// Get a specific user by id
+    /// </summary>
+    /// <response code="200">Returns a user</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <returns></returns>
     [HttpGet("users/{userId}")]
-    //summary: Get a specific user
     public async Task<IActionResult> GetUserById(string userId)
     {
         try
@@ -68,9 +81,14 @@ public class LegalController : ControllerBase
         }
     }
 
-
+    /// <summary>
+    /// Log in using a username and password
+    /// </summary>
+    /// <response code="200">Returns a token if user is authenticated</response>
+    /// <response code="401">If the user is not authenticated</response>
+    /// <returns></returns>
+    [AllowAnonymous]
     [HttpPost("login")]
-    //summary: Sign in as a legal user
     public async Task<IActionResult> Login([FromBody] LoginDTO login)
     {
         try
@@ -85,8 +103,6 @@ public class LegalController : ControllerBase
             return BadRequest("Login failed");
         }
     }
-    
 }
-
 public record LoginDTO(string Email, string Password);
 
