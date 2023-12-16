@@ -18,7 +18,7 @@ public class LegalService : ILegalService
 
     public async Task<string> GetAllAuctions(string token){
         try{
-            var auctions = await _infraRepo.GetFromEndpoint("auctions", null, token);
+            var auctions = await _infraRepo.GetFromEndpoint("/auctions", null, token);
             return auctions;
         }
         catch (Exception e){
@@ -27,13 +27,13 @@ public class LegalService : ILegalService
         }
     }
     public async Task<string> GetAuctionById(string auctionId, string token){
-        var auction = await _infraRepo.GetFromEndpoint($"auctions/{auctionId}", null, token);
+        var auction = await _infraRepo.GetFromEndpoint($"/auctions/{auctionId}", null, token);
         return auction;
     }
     public async Task<string> GetUserById(string userId, string token){
         try
         {
-            var user = await _infraRepo.GetFromEndpoint($"users/{userId}", null, token);
+            var user = await _infraRepo.GetFromEndpoint($"/users/{userId}", null, token);
             _logger.LogInformation("GetUserById: " + user);
             return user;
         }
@@ -46,7 +46,7 @@ public class LegalService : ILegalService
     public async Task<string> Login(LoginDTO login){
         try {
             var body = new StringContent(JsonSerializer.Serialize(login), Encoding.UTF8, "application/json");
-            var JWT_token = await _infraRepo.GetFromEndpoint($"auth/login", body);
+            var JWT_token = await _infraRepo.GetFromEndpoint($"/auth/login", body);
             _logger.LogInformation("JWT_token: " + JWT_token);
             return JWT_token;
         }

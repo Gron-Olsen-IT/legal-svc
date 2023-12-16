@@ -7,17 +7,23 @@ namespace LegalAPI.Services;
 
 public class InfraRepo : IInfraRepo
 {
-
+    private readonly string INFRA_CONN;
     private readonly HttpClient _client;
     private readonly ILogger<InfraRepo> _logger;
 
 
-    public InfraRepo(ILogger<InfraRepo> logger)
+    public InfraRepo(ILogger<InfraRepo> logger, IConfiguration configuration)
     {
         _logger = logger;
+        try{
+            INFRA_CONN = configuration["INFRA_CONN"]!;
+
+        }catch(Exception e){
+            throw new Exception("INFRA_CONN not set: " + e.Message);
+        }
         _client = new HttpClient()
         {
-            BaseAddress = new Uri("http://nginx:4000/")
+            BaseAddress = new Uri(INFRA_CONN)
         };
     }
 
