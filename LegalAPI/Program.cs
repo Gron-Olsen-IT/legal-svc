@@ -20,7 +20,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
-    builder.Services.AddSingleton<IVaultClient>(sidecar.vaultClient);
+    //builder.Services.AddSingleton<IVaultClient>(sidecar.vaultClient);
     builder.Services.AddScoped<ILegalService, LegalService>();
     builder.Services.AddScoped<IInfraRepo, InfraRepo>();
 
